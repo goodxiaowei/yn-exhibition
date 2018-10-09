@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.ExhibitorListMapper">
+    <!-- ExhibitorList的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_ExhibitorList_Map" type="com.yn.module.entity.ExhibitorList">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="region" property="region"/>
+        <result column="stand_no" property="standNo"/>
+        <result column="image" property="image"/>
+        <result column="content" property="content"/>
+        <result column="products" property="products"/>
+        <result column="categoies" property="categoies"/>
+        <result column="lan" property="lan"/>
+        <result column="sort" property="sort"/>
+        <result column="top" property="top"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="remark" property="remark"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:exhibitor_list的列名 -->
+    <sql id="exhibitor_list_Column">
+		id,title,region,stand_no,image,content,products,categoies,lan,sort,top,create_date,update_date,remark,del_flag
+	</sql>
+
+    <!-- 获得一个ExhibitorList对象,以参数ExhibitorList对象中不为空的属性作为条件进行查询 -->
+    <select id="selectExhibitorList" parameterType="com.yn.module.entity.ExhibitorList"
+            resultMap="result_ExhibitorList_Map">
+        select
+        <include refid="exhibitor_list_Column"/>
+        from exhibitor_list
+        <where>
+            del_flag = 0
+            <if test="title != null">and title = #{title}</if>
+            <if test="region != null">and region = #{region}</if>
+            <if test="standNo != null">and stand_no = #{standNo}</if>
+            <if test="image != null">and image = #{image}</if>
+            <if test="content != null">and content = #{content}</if>
+            <if test="products != null">and products = #{products}</if>
+            <if test="categoies != null">and categoies = #{categoies}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="top != null">and top = #{top}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="remark != null">and remark = #{remark}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+    <select id="selectExhibitorListCount" parameterType="com.yn.module.entity.ExhibitorList"
+            resultType="Integer">
+        select COUNT(1)
+        from exhibitor_list
+        <where>
+            del_flag = 0
+            <if test="title != null">and title = #{title}</if>
+            <if test="region != null">and region = #{region}</if>
+            <if test="standNo != null">and stand_no = #{standNo}</if>
+            <if test="image != null">and image = #{image}</if>
+            <if test="content != null">and content = #{content}</if>
+            <if test="products != null">and products = #{products}</if>
+            <if test="categoies != null">and categoies = #{categoies}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="top != null">and top = #{top}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="remark != null">and remark = #{remark}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.VisiterFaqMapper">
+    <!-- VisiterFaq的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_VisiterFaq_Map" type="com.yn.module.entity.VisiterFaq">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="faq" property="faq"/>
+        <result column="explanation" property="explanation"/>
+        <result column="sort" property="sort"/>
+        <result column="lan" property="lan"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:visiter_faq的列名 -->
+    <sql id="visiter_faq_Column">
+		id,title,faq,explanation,sort,lan,del_flag
+	</sql>
+
+    <!-- 获得一个VisiterFaq对象,以参数VisiterFaq对象中不为空的属性作为条件进行查询 -->
+    <select id="selectVisiterFaqList" parameterType="com.yn.module.entity.VisiterFaq" resultMap="result_VisiterFaq_Map">
+        select
+        <include refid="visiter_faq_Column"/>
+        from visiter_faq
+        <where>
+            del_flag = 0
+            <if test="title != null">and title = #{title}</if>
+            <if test="faq != null">and faq = #{faq}</if>
+            <if test="explanation != null">and explanation = #{explanation}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+    <select id="selectVisiterFaqCount" parameterType="com.yn.module.entity.VisiterFaq" resultType="Integer">
+        select COUNT(1)
+        from visiter_faq
+        <where>
+            del_flag = 0
+            <if test="title != null">and title = #{title}</if>
+            <if test="faq != null">and faq = #{faq}</if>
+            <if test="explanation != null">and explanation = #{explanation}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+</mapper>

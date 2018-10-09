@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.ExhibitorFloorplanMapper">
+    <!-- ExhibitorFloorplan的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_ExhibitorFloorplan_Map" type="com.yn.module.entity.ExhibitorFloorplan">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="fl_time" property="flTime"/>
+        <result column="image" property="image"/>
+        <result column="lan" property="lan"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:exhibitor_floorplan的列名 -->
+    <sql id="exhibitor_floorplan_Column">
+		id,title,fl_time,image,lan,update_date,del_flag
+	</sql>
+
+    <!-- 获得一个ExhibitorFloorplan对象,以参数ExhibitorFloorplan对象中不为空的属性作为条件进行查询 -->
+    <select id="selectExhibitorFloorplan" parameterType="com.yn.module.entity.ExhibitorFloorplan"
+            resultMap="result_ExhibitorFloorplan_Map">
+        select
+        <include refid="exhibitor_floorplan_Column"/>
+        from exhibitor_floorplan
+        <where>
+            del_flag = 0
+            <if test="title != null">and title = #{title}</if>
+            <if test="flTime != null">and fl_time = #{flTime}</if>
+            <if test="image != null">and image = #{image}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+        LIMIT 1
+    </select>
+
+</mapper>

@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.FocusImage;/** * @Author: xw * @Description: * @Date: 18:05 2018/10/5 */public interface FocusImageMapper {    public FocusImage selectFocusImage(FocusImage focusImage);}

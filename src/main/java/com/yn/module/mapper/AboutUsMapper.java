@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.AboutUs;import java.util.List;/** * @Author: xw * @Description: * @Date: 13:00 2018/9/21 */public interface AboutUsMapper {    public List<AboutUs> selectAboutUsList(AboutUs aboutUs);    public Integer selectAboutUsCount(AboutUs aboutUs);}

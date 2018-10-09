@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.CmsArticle;import java.util.List;/** * @Author: xw * @Description: * @Date: 11:34 2018/9/30 */public interface CmsArticleMapper {    public List<CmsArticle> selectCmsArticleList(CmsArticle cmsArticle);    public Integer selectCmsArticleCount(CmsArticle cmsArticle);}

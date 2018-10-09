@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.FocusImageMapper">
+    <!-- FocusImage的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_FocusImage_Map" type="com.yn.module.entity.FocusImage">
+        <id column="id" property="id"/>
+        <result column="image_name" property="imageName"/>
+        <result column="image_desc" property="imageDesc"/>
+        <result column="iamge_content" property="iamgeContent"/>
+        <result column="open_type" property="openType"/>
+        <result column="image_num" property="imageNum"/>
+        <result column="use_type" property="useType"/>
+        <result column="create_id" property="createId"/>
+        <result column="create_date" property="createDate"/>
+        <result column="image_url" property="imageUrl"/>
+        <result column="image_path" property="imagePath"/>
+        <result column="image_href" property="imageHref"/>
+        <result column="position_type" property="positionType"/>
+        <result column="website_type" property="websiteType"/>
+        <result column="category_id" property="categoryId"/>
+    </resultMap>
+    <!-- 数据库中表名为:focus_image的列名 -->
+    <sql id="focus_image_Column">
+		id,image_name,image_desc,iamge_content,open_type,image_num,use_type,create_id,create_date,image_url,image_path,image_href,position_type,website_type,category_id
+	</sql>
+
+    <!-- 获得一个FocusImage对象,以参数FocusImage对象中不为空的属性作为条件进行查询 -->
+    <select id="selectFocusImage" parameterType="com.yn.module.entity.FocusImage"
+            resultMap="result_FocusImage_Map">
+        select
+        <include refid="focus_image_Column"/>
+        from focus_image
+        <where>
+            <if test="imageName != null">and image_name = #{imageName}</if>
+            <if test="imageDesc != null">and image_desc = #{imageDesc}</if>
+            <if test="iamgeContent != null">and iamge_content = #{iamgeContent}</if>
+            <if test="openType != null">and open_type = #{openType}</if>
+            <if test="imageNum != null">and image_num = #{imageNum}</if>
+            <if test="useType != null">and use_type = #{useType}</if>
+            <if test="createId != null">and create_id = #{createId}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="imageUrl != null">and image_url = #{imageUrl}</if>
+            <if test="imagePath != null">and image_path = #{imagePath}</if>
+            <if test="imageHref != null">and image_href = #{imageHref}</if>
+            <if test="positionType != null">and position_type = #{positionType}</if>
+            <if test="websiteType != null">and website_type = #{websiteType}</if>
+            <if test="categoryId != null">and category_id = #{categoryId}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+</mapper>

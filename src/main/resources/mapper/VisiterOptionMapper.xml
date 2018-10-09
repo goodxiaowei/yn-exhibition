@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.VisiterOptionMapper">
+    <!-- VisiterOption的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_VisiterOption_Map" type="com.yn.module.entity.VisiterOption">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="category" property="category"/>
+        <result column="sort" property="sort"/>
+        <result column="lan" property="lan"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:visiter_option的列名 -->
+    <sql id="visiter_option_Column">
+		id,name,category,sort,lan,del_flag
+	</sql>
+
+    <!-- 获得一个VisiterOptionList对象,以参数VisiterOption对象中不为空的属性作为条件进行查询 -->
+    <select id="selectVisiterOptionList" parameterType="com.yn.module.entity.VisiterOption"
+                     resultMap="result_VisiterOption_Map">
+    select
+    <include refid="visiter_option_Column"/>
+    from visiter_option
+    <where>
+        del_flag = 0
+        <if test="name != null">and name = #{name}</if>
+        <if test="category != null">and category = #{category}</if>
+        <if test="sort != null">and sort = #{sort}</if>
+        <if test="lan != null">and lan = #{lan}</if>
+        <if test="id != null">and id = #{id}</if>
+    </where>
+        ORDER BY sort ASC
+  </select>
+
+    <select id="selectVisiterOptionCount" parameterType="com.yn.module.entity.VisiterOption"
+            resultType="Integer">
+        select COUNT(1) from visiter_option
+        <where>
+            <if test="name != null">and name = #{name}</if>
+            <if test="category != null">and category = #{category}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="delFlag != null">and del_flag = #{delFlag}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+</mapper>

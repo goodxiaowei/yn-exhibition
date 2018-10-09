@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.ExhibitorList;import java.util.List;/** * @Author: xw * @Description: * @Date: 11:17 2018/9/30 */public interface ExhibitorListMapper {    public List<ExhibitorList> selectExhibitorList(ExhibitorList exhibitorList);    public Integer selectExhibitorListCount(ExhibitorList exhibitorList);}

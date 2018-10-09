@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.HomeLogoMapper">
+    <!-- HomeLogo的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_HomeLogo_Map" type="com.yn.module.entity.HomeLogo">
+        <id column="id" property="id"/>
+        <result column="logo" property="logo"/>
+        <result column="times" property="times"/>
+        <result column="wheres" property="wheres"/>
+        <result column="lan" property="lan"/>
+        <result column="remarks" property="remarks"/>
+        <result column="book_a_stand" property="bookAStand"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:home_logo的列名 -->
+    <sql id="home_logo_Column">
+		id,logo,times,wheres,lan,remarks,book_a_stand
+	</sql>
+
+    <!-- 获得一个HomeLogo对象,以参数HomeLogo对象中不为空的属性作为条件进行查询 -->
+    <select id="selectHomeLogo" parameterType="com.yn.module.entity.HomeLogo" resultMap="result_HomeLogo_Map">
+        select
+        <include refid="home_logo_Column"/>
+        from home_logo
+        <where>
+            <if test="logo != null">and logo = #{logo}</if>
+            <if test="times != null">and times = #{times}</if>
+            <if test="wheres != null">and wheres = #{wheres}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="remarks != null">and remarks = #{remarks}</if>
+            <if test="bookAStand != null">and book_a_stand = #{bookAStand}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+        LIMIT 1
+    </select>
+
+</mapper>

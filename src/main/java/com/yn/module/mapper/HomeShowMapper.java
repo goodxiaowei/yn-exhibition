@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.HomeShow;import java.util.List;/** * @Author: xw * @Description: * @Date: 1:09 2018/10/3 */public interface HomeShowMapper {    public List<HomeShow> selectHomeShowList(HomeShow homeShow);    public Integer selectHomeShowCount(HomeShow homeShow);}

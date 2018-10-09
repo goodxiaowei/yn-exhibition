@@ -1,0 +1,1 @@
+package com.yn.module.entity;import ch.qos.logback.core.joran.spi.NoAutoStart;import lombok.AllArgsConstructor;import lombok.Data;/** * @Author: xw * @Description: * @Date: 18:47 2018/10/5 */@Data@NoAutoStart@AllArgsConstructorpublic class TimeLocation {    private WhenWhere whenWhere;    private TravelInformation travelInformation;}

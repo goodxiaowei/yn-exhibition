@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.CmsArticleMapper">
+    <!-- CmsArticle的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_CmsArticle_Map" type="com.yn.module.entity.CmsArticle">
+        <id column="id" property="id"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="title" property="title"/>
+        <result column="link" property="link"/>
+        <result column="color" property="color"/>
+        <result column="image" property="image"/>
+        <result column="keywords" property="keywords"/>
+        <result column="description" property="description"/>
+        <result column="weight" property="weight"/>
+        <result column="weight_date" property="weightDate"/>
+        <result column="hits" property="hits"/>
+        <result column="posid" property="posid"/>
+        <result column="custom_content_view" property="customContentView"/>
+        <result column="view_config" property="viewConfig"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="remarks" property="remarks"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:cms_article的列名 -->
+    <sql id="cms_article_Column">
+		id,category_id,title,link,color,image,keywords,description,weight,weight_date,hits,posid,custom_content_view,view_config,create_by,create_date,update_by,update_date,remarks,del_flag
+	</sql>
+
+    <!-- 获得一个CmsArticle对象,以参数CmsArticle对象中不为空的属性作为条件进行查询 -->
+    <select id="selectCmsArticleList" parameterType="com.yn.module.entity.CmsArticle"
+            resultMap="result_CmsArticle_Map">
+        select
+        <include refid="cms_article_Column"/>
+        from cms_article
+        <where>
+            del_flag = 0
+            <if test="link != null">and link = #{link}</if>
+            <if test="color != null">and color = #{color}</if>
+            <if test="image != null">and image = #{image}</if>
+            <if test="keywords != null">and keywords = #{keywords}</if>
+            <if test="description != null">and description = #{description}</if>
+            <if test="weight != null">and weight = #{weight}</if>
+            <if test="weightDate != null">and weight_date = #{weightDate}</if>
+            <if test="hits != null">and hits = #{hits}</if>
+            <if test="posid != null">and posid = #{posid}</if>
+            <if test="customContentView != null">and custom_content_view = #{customContentView}</if>
+            <if test="viewConfig != null">and view_config = #{viewConfig}</if>
+            <if test="createBy != null">and create_by = #{createBy}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateBy != null">and update_by = #{updateBy}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="remarks != null">and remarks = #{remarks}</if>
+            <if test="categoryId != null">and category_id = #{categoryId}</if>
+            <if test="title != null">and title = #{title}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+    <select id="selectCmsArticleCount" parameterType="com.yn.module.entity.CmsArticle"
+            resultType="Integer">
+        select COUNT(1)
+        from cms_article
+        <where>
+            del_flag = 0
+            <if test="link != null">and link = #{link}</if>
+            <if test="color != null">and color = #{color}</if>
+            <if test="image != null">and image = #{image}</if>
+            <if test="keywords != null">and keywords = #{keywords}</if>
+            <if test="description != null">and description = #{description}</if>
+            <if test="weight != null">and weight = #{weight}</if>
+            <if test="weightDate != null">and weight_date = #{weightDate}</if>
+            <if test="hits != null">and hits = #{hits}</if>
+            <if test="posid != null">and posid = #{posid}</if>
+            <if test="customContentView != null">and custom_content_view = #{customContentView}</if>
+            <if test="viewConfig != null">and view_config = #{viewConfig}</if>
+            <if test="createBy != null">and create_by = #{createBy}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateBy != null">and update_by = #{updateBy}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="remarks != null">and remarks = #{remarks}</if>
+            <if test="categoryId != null">and category_id = #{categoryId}</if>
+            <if test="title != null">and title = #{title}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.VisiterFaq;import java.util.List;/** * @Author: xw * @Description: * @Date: 2:06 2018/10/3 */public interface VisiterFaqMapper {    public List<VisiterFaq> selectVisiterFaqList(VisiterFaq visiterFaq);    public Integer selectVisiterFaqCount(VisiterFaq visiterFaq);}

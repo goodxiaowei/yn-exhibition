@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.HomeLogo;/** * @Author: xw * @Description: * @Date: 1:08 2018/10/3 */public interface HomeLogoMapper {    public HomeLogo selectHomeLogo(HomeLogo homeLogo);}

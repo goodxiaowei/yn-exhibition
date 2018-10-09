@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.Travel;import java.util.List;/** * @Author: xw * @Description: * @Date: 16:07 2018/10/9 */public interface TravelMapper {    public List<Travel> selectTravelList(Travel travel);}

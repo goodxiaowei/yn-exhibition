@@ -1,0 +1,1 @@
+package com.yn.module.entity;import lombok.AllArgsConstructor;import lombok.Data;import lombok.NoArgsConstructor;import java.util.List;/** * @Author: xw * @Description: * @Date: 1:40 2018/10/3 */@Datapublic class Exhibit {    private ExhibitorFloorplan exhibitorFloorplan;    private List<ExhibitWhy> exhibitWhyList;}

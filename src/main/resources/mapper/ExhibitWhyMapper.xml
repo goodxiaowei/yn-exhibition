@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.ExhibitWhyMapper">
+    <!-- ExhibitWhy的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_ExhibitWhy_Map" type="com.yn.module.entity.ExhibitWhy">
+        <id column="id" property="id"/>
+        <result column="sort" property="sort"/>
+        <result column="title" property="title"/>
+        <result column="concent" property="concent"/>
+        <result column="image" property="image"/>
+        <result column="link" property="link"/>
+        <result column="lan" property="lan"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="update_date" property="updateDate"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:exhibit_why的列名 -->
+    <sql id="exhibit_why_Column">
+		id,sort,title,concent,image,link,lan,del_flag,update_date
+	</sql>
+
+    <!-- 获得一个ExhibitWhy对象,以参数ExhibitWhy对象中不为空的属性作为条件进行查询 -->
+    <select id="selectExhibitWhy" parameterType="com.yn.module.entity.ExhibitWhy"
+            resultMap="result_ExhibitWhy_Map">
+        select
+        <include refid="exhibit_why_Column"/>
+        from exhibit_why
+        <where>
+            del_flag = 0
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="title != null">and title = #{title}</if>
+            <if test="concent != null">and concent = #{concent}</if>
+            <if test="image != null">and image = #{image}</if>
+            <if test="link != null">and link = #{link}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+        LIMIT 1
+    </select>
+
+</mapper>

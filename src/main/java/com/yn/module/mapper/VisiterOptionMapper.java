@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.VisiterOption;import java.util.List;/** * @Author: xw * @Description: * @Date: 12:33 2018/10/5 */public interface VisiterOptionMapper {    public List<VisiterOption> selectVisiterOptionList(VisiterOption visiterOption);    public Integer selectVisiterOptionCount(VisiterOption visiterOption);}

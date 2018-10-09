@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.VisiterRegMapper">
+    <!-- VisiterReg的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_VisiterReg_Map" type="com.yn.module.entity.VisiterReg">
+        <id column="id" property="id"/>
+        <result column="num" property="num"/>
+        <result column="conference_events_id" property="conferenceEventsId"/>
+        <result column="surname" property="surname"/>
+        <result column="first_name" property="firstName"/>
+        <result column="email" property="email"/>
+        <result column="company" property="company"/>
+        <result column="job_title" property="jobTitle"/>
+        <result column="mobile" property="mobile"/>
+        <result column="phone" property="phone"/>
+        <result column="code" property="code"/>
+        <result column="company_adress" property="companyAdress"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="street" property="street"/>
+        <result column="business_nature" property="businessNature"/>
+        <result column="hnc" property="hnc"/>
+        <result column="purpose" property="purpose"/>
+        <result column="create_date" property="createDate"/>
+        <result column="lan" property="lan"/>
+        <result column="remarks" property="remarks"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="audit" property="audit"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:visiter_reg的列名 -->
+    <sql id="visiter_reg_Column">
+        id,num,conference_events_id,surname,first_name,email,company,job_title,mobile,phone,code,company_adress,province,city,street,business_nature,hnc,purpose,create_date,lan,remarks,del_flag,audit
+  </sql>
+
+    <!-- 将VisiterReg中属性值不为null的数据,插入到对应数据库的表中 -->
+    <insert id="insertVisiterReg" parameterType="com.yn.module.entity.VisiterReg">
+        insert into visiter_reg
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="num != null">num,</if>
+            <if test="conferenceEventsId != null">conference_events_id,</if>
+            <if test="surname != null">surname,</if>
+            <if test="firstName != null">first_name,</if>
+            <if test="email != null">email,</if>
+            <if test="company != null">company,</if>
+            <if test="jobTitle != null">job_title,</if>
+            <if test="mobile != null">mobile,</if>
+            <if test="phone != null">phone,</if>
+            <if test="code != null">code,</if>
+            <if test="companyAdress != null">company_adress,</if>
+            <if test="province != null">province,</if>
+            <if test="city != null">city,</if>
+            <if test="street != null">street,</if>
+            <if test="businessNature != null">business_nature,</if>
+            <if test="hnc != null">hnc,</if>
+            <if test="purpose != null">purpose,</if>
+            <if test="createDate != null">create_date,</if>
+            <if test="lan != null">lan,</if>
+            <if test="remarks != null">remarks,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="audit != null">audit,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="num != null">#{num},</if>
+            <if test="conferenceEventsId != null">#{conferenceEventsId},</if>
+            <if test="surname != null">#{surname},</if>
+            <if test="firstName != null">#{firstName},</if>
+            <if test="email != null">#{email},</if>
+            <if test="company != null">#{company},</if>
+            <if test="jobTitle != null">#{jobTitle},</if>
+            <if test="mobile != null">#{mobile},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="code != null">#{code},</if>
+            <if test="companyAdress != null">#{companyAdress},</if>
+            <if test="province != null">#{province},</if>
+            <if test="city != null">#{city},</if>
+            <if test="street != null">#{street},</if>
+            <if test="businessNature != null">#{businessNature},</if>
+            <if test="hnc != null">#{hnc},</if>
+            <if test="purpose != null">#{purpose},</if>
+            <if test="createDate != null">#{createDate},</if>
+            <if test="lan != null">#{lan},</if>
+            <if test="remarks != null">#{remarks},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="audit != null">#{audit},</if>
+        </trim>
+    </insert>
+
+    <select id="select" parameterType="com.yn.module.entity.VisiterReg" resultMap="result_VisiterReg_Map">
+        SELECT <include refid="visiter_reg_Column"/>
+        FROM visiter_reg WHERE del_flag = 0
+        <if test="id != null">AND id = #{id}</if>
+        LIMIT 1
+    </select>
+</mapper>

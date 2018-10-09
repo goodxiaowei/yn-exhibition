@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.AboutUsMapper">
+    <!-- AboutUs的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+    <resultMap id="result_AboutUs_Map" type="com.yn.module.entity.AboutUs">
+        <id column="id" property="id"/>
+        <result column="organizers" property="organizers"/>
+        <result column="titel" property="titel"/>
+        <result column="content" property="content"/>
+        <result column="logo" property="logo"/>
+        <result column="sort" property="sort"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="lan" property="lan"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 数据库中表名为:about_us的列名 -->
+    <sql id="about_us_Column">
+		id,organizers,titel,content,logo,sort,create_date,update_date,lan,del_flag
+	</sql>
+
+    <!-- 获得一个AboutUs对象,以参数AboutUs对象中不为空的属性作为条件进行查询 -->
+    <select id="selectAboutUsList" parameterType="com.yn.module.entity.AboutUs" resultMap="result_AboutUs_Map">
+        select
+        <include refid="about_us_Column"/>
+        from about_us
+        <where>
+            del_flag = 0
+            <if test="organizers != null">and organizers = #{organizers}</if>
+            <if test="titel != null">and titel = #{titel}</if>
+            <if test="content != null">and content = #{content}</if>
+            <if test="logo != null">and logo = #{logo}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+    <select id="selectAboutUsCount" parameterType="com.yn.module.entity.AboutUs" resultType="Integer">
+        select COUNT(1)
+        from about_us
+        <where>
+            del_flag = 0
+            <if test="organizers != null">and organizers = #{organizers}</if>
+            <if test="titel != null">and titel = #{titel}</if>
+            <if test="content != null">and content = #{content}</if>
+            <if test="logo != null">and logo = #{logo}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+    </select>
+
+</mapper>

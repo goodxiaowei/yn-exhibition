@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import com.yn.module.entity.AboutEvent;/** * @Author: xw * @Description: * @Date: 13:00 2018/9/21 */public interface AboutEventMapper {    public AboutEvent selectAboutEvent(AboutEvent aboutEvent);}
