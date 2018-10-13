@@ -1,0 +1,1 @@
+package com.yn.module.mapper;import java.util.List;import java.util.Map;/** * @Author: xw * @Description: * @Date: 20:16 2018/10/10 */public interface ComboMapper {    public List<Map<String, Object>> selectComboList(Map<String, Object> map);}

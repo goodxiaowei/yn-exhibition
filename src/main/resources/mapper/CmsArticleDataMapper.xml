@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.CmsArticleDataMapper">
+
+    <resultMap id="result_CmsArticleData_Map" type="com.yn.module.entity.CmsArticleData">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="copyfrom" property="copyfrom"/>
+        <result column="relation" property="relation"/>
+        <result column="allow_comment" property="allowComment"/>
+    </resultMap>
+    <!-- 数据库中表名为:cms_article的列名 -->
+    <sql id="cms_article_data_Column">
+      id,`content`,copyfrom, relation, allow_comment
+    </sql>
+
+    <select id="selectCmsArticleData" parameterType="com.yn.module.entity.CmsArticleData" resultMap="result_CmsArticleData_Map">
+        select
+        <include refid="cms_article_data_Column"/>
+        from cms_article_data
+        <where>
+            <if test="id != null">and `id` = #{id}</if>
+            <if test="content != null">and `content` = #{content}</if>
+            <if test="copyfrom != null">and `copyfrom` = #{copyfrom}</if>
+            <if test="relation != null">and `relation` = #{relation}</if>
+            <if test="allowComment != null">and `allow_comment` = #{allowComment}</if>
+        </where>
+        LIMIT 1
+    </select>
+</mapper>

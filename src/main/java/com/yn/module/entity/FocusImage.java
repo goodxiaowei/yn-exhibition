@@ -20,7 +20,7 @@ public class FocusImage {
     /***/
     private String imageDesc;
     /***/
-    private String iamgeContent;
+    private String imageContent;
     /***/
     private Integer openType;
     /***/

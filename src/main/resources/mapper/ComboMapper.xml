@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.ComboMapper">
+
+    <!-- 数据库中表名为:cms_article的列名 -->
+    <sql id="combo_Column">
+      id,`type`,context,del_flag degFlag, sort, lan
+    </sql>
+
+    <select id="selectComboList" parameterType="Map" resultType="Map">
+        select
+        <include refid="combo_Column"/>
+        from combo
+        <where>
+            del_flag = 0
+            <if test="type != null">and `type` = #{type}</if>
+            <if test="lan != null">and `lan` = #{lan}</if>
+        </where>
+        ORDER BY sort ASC
+    </select>
+</mapper>
