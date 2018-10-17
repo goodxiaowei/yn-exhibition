@@ -94,4 +94,8 @@
         <if test="id != null">AND id = #{id}</if>
         LIMIT 1
     </select>
+
+    <select id="queryMaxNum" resultType="String">
+        SELECT MAX(num) + 1 FROM visiter_reg;
+    </select>
 </mapper>
