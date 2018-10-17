@@ -17,4 +17,5 @@ public class CmsArticleData {
     private String copyfrom;
     private String relation;
     private String allowComment;
+    private String title;
 }

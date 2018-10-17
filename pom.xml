@@ -24,8 +24,6 @@
         <fastjson.version>1.2.39</fastjson.version>
         <druid.version>1.0.18</druid.version>
         <pagehelper.version>1.2.3</pagehelper.version>
-        <log4j.version>1.2.17</log4j.version>
-        <lombok.version>1.16.14</lombok.version>
         <mabatis.version>1.1.1</mabatis.version>
         <lombok.version>1.16.14</lombok.version>
         <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
@@ -77,11 +75,6 @@
         <!--<artifactId>swagger-spring-boot-starter</artifactId>-->
         <!--<version>1.6.0.RELEASE</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>

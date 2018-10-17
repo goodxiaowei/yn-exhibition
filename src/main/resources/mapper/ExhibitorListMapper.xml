@@ -33,7 +33,7 @@
         from exhibitor_list
         <where>
             del_flag = 0
-            <if test="title != null">and title = #{title}</if>
+            <if test="title != null and title != ''">and title LIKE concat('%',#{title},'%')</if>
             <if test="region != null">and region = #{region}</if>
             <if test="standNo != null">and stand_no = #{standNo}</if>
             <if test="image != null">and image = #{image}</if>
@@ -56,7 +56,7 @@
         from exhibitor_list
         <where>
             del_flag = 0
-            <if test="title != null">and title = #{title}</if>
+            <if test="title != null and title != ''">and title LIKE concat('%',#{title},'%')</if>
             <if test="region != null">and region = #{region}</if>
             <if test="standNo != null">and stand_no = #{standNo}</if>
             <if test="image != null">and image = #{image}</if>

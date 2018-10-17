@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yn.module.mapper.SysLogMapper">
+
+    <insert id="insert" parameterType="com.yn.module.entity.SysLog">
+        insert into sys_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="type != null">`type`,</if>
+            <if test="title != null">title,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createDate != null">create_date,</if>
+            <if test="remoteAddr != null">remote_addr,</if>
+            <if test="userAgent != null">user_agent,</if>
+            <if test="requestUri != null">request_uri,</if>
+            <if test="method != null">method,</if>
+            <if test="params != null">params,</if>
+            <if test="exception != null">`exception`,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="type != null">#{type},</if>
+            <if test="title != null">#{title},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createDate != null">#{createDate},</if>
+            <if test="remoteAddr != null">#{remoteAddr},</if>
+            <if test="userAgent != null">#{userAgent},</if>
+            <if test="requestUri != null">#{requestUri},</if>
+            <if test="method != null">#{method},</if>
+            <if test="params != null">#{params},</if>
+            <if test="exception != null">#{exception},</if>
+        </trim>
+    </insert>
+
+</mapper>
