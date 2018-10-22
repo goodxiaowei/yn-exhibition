@@ -21,8 +21,8 @@
 
     <!-- 数据库中表名为:conference_events的列名 -->
     <sql id="conference_events_Column">
-		id,organizer,nem,link,event_name,event_date,content,location,sort,create_date,update_date,lan,remark,del_flag
-	</sql>
+      id,organizer,nem,link,event_name,event_date,content,location,sort,create_date,update_date,lan,remark,del_flag
+    </sql>
 
     <!-- 获得一个ConferenceEvents对象,以参数ConferenceEvents对象中不为空的属性作为条件进行查询 -->
     <select id="selectConferenceEventsList" parameterType="com.yn.module.entity.ConferenceEvents"
@@ -68,6 +68,30 @@
             <if test="remark != null">and remark = #{remark}</if>
             <if test="id != null">and id = #{id}</if>
         </where>
+    </select>
+
+    <select id="selectConferenceEvents" parameterType="com.yn.module.entity.ConferenceEvents"
+            resultMap="result_ConferenceEvents_Map">
+        select
+        <include refid="conference_events_Column"/>
+        from conference_events
+        <where>
+            del_flag = 0
+            <if test="organizer != null">and organizer = #{organizer}</if>
+            <if test="nem != null">and nem = #{nem}</if>
+            <if test="link != null">and link = #{link}</if>
+            <if test="eventName != null">and event_name = #{eventName}</if>
+            <if test="eventDate != null">and event_date = #{eventDate}</if>
+            <if test="content != null">and content = #{content}</if>
+            <if test="location != null">and location = #{location}</if>
+            <if test="sort != null">and sort = #{sort}</if>
+            <if test="createDate != null">and create_date = #{createDate}</if>
+            <if test="updateDate != null">and update_date = #{updateDate}</if>
+            <if test="lan != null">and lan = #{lan}</if>
+            <if test="remark != null">and remark = #{remark}</if>
+            <if test="id != null">and id = #{id}</if>
+        </where>
+        LIMIT 1
     </select>
 
 </mapper>
