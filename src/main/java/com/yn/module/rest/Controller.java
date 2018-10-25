@@ -196,6 +196,7 @@ public class Controller {
         try {
             ExhibitorList exhibitorList = new ExhibitorList();
             exhibitorList.setTitle(title);
+            exhibitorList.setProducts(title);
             PageHelper.startPage(pageNum, pageSize);
             if ("C".equals(language)){
                 exhibitorList.setLan("0");
