@@ -38,7 +38,7 @@
             <if test="standNo != null">and stand_no = #{standNo}</if>
             <if test="image != null">and image = #{image}</if>
             <if test="content != null">and content = #{content}</if>
-            <if test="products != null">and products = #{products}</if>
+            <if test="products != null and products != ''">OR products LIKE concat('%', #{products},'%')</if>
             <if test="categoies != null">and categoies = #{categoies}</if>
             <if test="lan != null">and lan = #{lan}</if>
             <if test="sort != null">and sort = #{sort}</if>
@@ -61,7 +61,7 @@
             <if test="standNo != null">and stand_no = #{standNo}</if>
             <if test="image != null">and image = #{image}</if>
             <if test="content != null">and content = #{content}</if>
-            <if test="products != null">and products = #{products}</if>
+            <if test="products != null and products != ''">OR products LIKE concat('%', #{products},'%')</if>
             <if test="categoies != null">and categoies = #{categoies}</if>
             <if test="lan != null">and lan = #{lan}</if>
             <if test="sort != null">and sort = #{sort}</if>
