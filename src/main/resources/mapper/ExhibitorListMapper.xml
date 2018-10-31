@@ -48,6 +48,7 @@
             <if test="remark != null">and remark = #{remark}</if>
             <if test="id != null">and id = #{id}</if>
         </where>
+        ORDER BY lan,top DESC,sort ASC,title ASC,update_date DESC
     </select>
 
     <select id="selectExhibitorListCount" parameterType="com.yn.module.entity.ExhibitorList"
