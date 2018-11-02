@@ -1,8 +1,12 @@
 package com.yn.module.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.yn.common.utils.Date2LongSerializerUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * visiter_reg实体类
@@ -88,7 +92,8 @@ public class VisiterReg {
     /**
      * 创建时间
      */
-    private String createDate;
+    @JsonSerialize(using = Date2LongSerializerUtil.class)
+    private Date createDate;
     /**
      * 语言
      */
